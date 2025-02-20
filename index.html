@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | AI & Art Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Space+Mono:wght@400;700&display=swap');
+        
+        :root {
+            --primary-bg: #ffffff;
+            --secondary-bg: #f5f5f5;
+            --primary-text: #121212;
+            --secondary-text: #3a3a3a;
+            --accent: #000000;
+            --border-radius: 0px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .dotted-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        header {
+            padding: 40px 0;
+            position: relative;
+        }
+
+        .logo {
+            font-family: 'Special Elite', cursive;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--primary-text);
+            font-size: 15px;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--primary-text);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 60%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .typewriter-heading {
+            font-family: 'Special Elite', cursive;
+            font-size: 4vw;
+            margin-bottom: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end);
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 90%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-family: 'Space Mono', monospace;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--primary-bg);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent);
+            margin-left: 15px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            color: var(--primary-bg);
+        }
+
+        .portfolio-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-heading {
+            font-family: 'Special Elite', cursive;
+            font-size: 36px;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 1px;
+            background-color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--secondary-bg);
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            background-color: #ddd;
+        }
+
+        .project-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .project-category {
+            font-size: 14px;
+            color: var(--secondary-text);
+            margin-bottom: 15px;
+            display: inline-block;
+            border-bottom: 1px dotted var(--secondary-text);
+        }
+
+        .project-description {
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: var(--accent);
+            color: var(--primary-bg);
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-heading {
+            font-family: 'Special Elite', cursive;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--primary-bg);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--primary-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-bg);
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .hero-content {
+                width: 100%;
+            }
+            
+            .typewriter-heading {
+                font-size: 8vw;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dotted-gradient"></div>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">YourName</div>
+                <div class="nav-links">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">AI Projects</a>
+                    <a href="#" class="nav-link">Artwork</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="typewriter-heading">AI & Creative Exploration</h1>
+                    <p class="hero-description">Welcome to my digital playground where artificial intelligence meets artistic expression. Exploring the intersection of technology and creativity through projects, experiments, and visual art.</p>
+                    <a href="#" class="btn btn-primary">View Projects</a>
+                    <a href="#" class="btn btn-secondary">About Me</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-section">
+            <div class="container">
+                <h2 class="section-heading">AI Projects</h2>
+                <div class="grid">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/320" alt="AI Project" class="project-img">
+                        <span class="project-category">Machine Learning</span>
+                        <h3 class="project-title">Neural Style Transfer</h3>
+                        <p class="project-description">An exploration of style transfer algorithms to blend artistic styles with photography.</p>
+                        <a href="#" class="btn btn-secondary">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/320" alt="AI Project" class="project-img">
+                        <span class="project-category">Natural Language Processing</span>
+                        <h3 class="project-title">Poetry Generator</h3>
+                        <p class="project-description">A custom language model that generates poetry in the style of classic authors.</p>
+                        <a href="#" class="btn btn-secondary">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/320" alt="AI Project" class="project-img">
+                        <span class="project-category">Computer Vision</span>
+                        <h3 class="project-title">Object Detection System</h3>
+                        <p class="project-description">Real-time object detection system trained on custom datasets.</p>
+                        <a href="#" class="btn btn-secondary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-section">
+            <div class="container">
+                <h2 class="section-heading">Artwork</h2>
+                <div class="grid">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/320" alt="Artwork" class="project-img">
+                        <span class="project-category">Digital Art</span>
+                        <h3 class="project-title">Abstract Series I</h3>
+                        <p class="project-description">A collection of abstract digital compositions exploring form and contrast.</p>
+                        <a href="#" class="btn btn-secondary">View Artwork</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/320" alt="Artwork" class="project-img">
+                        <span class="project-category">Mixed Media</span>
+                        <h3 class="project-title">Technological Decay</h3>
+                        <p class="project-description">Exploring the intersection of technology and nature through mixed media.</p>
+                        <a href="#" class="btn btn-secondary">View Artwork</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/320" alt="Artwork" class="project-img">
+                        <span class="project-category">AI-Generated</span>
+                        <h3 class="project-title">Dream Landscapes</h3>
+                        <p class="project-description">Landscapes generated through custom GANs and refined by hand.</p>
+                        <a href="#" class="btn btn-secondary">View Artwork</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-heading">YourName</h3>
+                    <p>AI Researcher & Digital Artist<br>Based in [Your City]</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">gh</a>
+                        <a href="#" class="social-icon">tw</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Navigation</h3>
+                    <div class="footer-links">
+                        <a href="#">Home</a>
+                        <a href="#">AI Projects</a>
+                        <a href="#">Artwork</a>
+                        <a href="#">About</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <div class="footer-links">
+                        <a href="mailto:you@example.com">you@example.com</a>
+                        <a href="#">Schedule a call</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 YourName. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
