@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | AI & Art Portfolio</title>
+    <title>Ali Mehdi | AI Explorer & Digital Artist</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Space+Mono:wght@400;700&display=swap');
         
@@ -13,6 +13,7 @@
             --primary-text: #121212;
             --secondary-text: #3a3a3a;
             --accent: #000000;
+            --highlight: #333333;
             --border-radius: 0px;
             --transition: all 0.3s ease;
         }
@@ -35,11 +36,46 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(circle, #000000 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.1;
+            background-image: radial-gradient(circle, #000000 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            opacity: 0.15;
             pointer-events: none;
             z-index: 0;
+            animation: wave 8s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.15;
+            }
+            25% {
+                transform: translateY(-5px) scale(1.1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translateY(0) scale(0.9);
+                opacity: 0.1;
+            }
+            75% {
+                transform: translateY(5px) scale(1.05);
+                opacity: 0.18;
+            }
+        }
+
+        .dotted-gradient::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.12;
+            pointer-events: none;
+            animation: wave 8s ease-in-out infinite reverse;
+            animation-delay: -4s;
         }
 
         .container {
@@ -114,13 +150,22 @@
             font-size: 4vw;
             margin-bottom: 30px;
             overflow: hidden;
+            border-right: 3px solid var(--accent);
             white-space: nowrap;
-            animation: typing 3.5s steps(40, end);
+            width: fit-content;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
         }
 
         @keyframes typing {
             from { width: 0 }
             to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent) }
         }
 
         .hero-description {
@@ -234,6 +279,190 @@
             margin-bottom: 20px;
         }
 
+        .quote-section {
+            padding: 100px 0;
+            background-color: var(--accent);
+            color: var(--primary-bg);
+            position: relative;
+        }
+
+        .quote-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-text {
+            font-family: 'Special Elite', cursive;
+            font-size: 28px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            font-size: 48px;
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .quote-text::before {
+            left: -30px;
+            top: -20px;
+        }
+
+        .quote-text::after {
+            right: -30px;
+            bottom: -40px;
+        }
+
+        .quote-author {
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .about-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 1px solid var(--accent);
+        }
+
+        .about-text {
+            padding-right: 40px;
+        }
+
+        .about-heading {
+            font-family: 'Special Elite', cursive;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .about-description {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .about-facts {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .about-fact {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .about-fact::before {
+            content: "•";
+            margin-right: 10px;
+        }
+
+        .featured-project {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .featured-project:nth-child(even) {
+            grid-template-columns: 1fr 1.5fr;
+        }
+
+        .featured-project:nth-child(even) .featured-project-content {
+            order: -1;
+        }
+
+        .featured-project-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border: 1px solid var(--accent);
+        }
+
+        .featured-project-category {
+            font-size: 14px;
+            color: var(--secondary-text);
+            margin-bottom: 15px;
+            display: inline-block;
+            border-bottom: 1px dotted var(--secondary-text);
+        }
+
+        .featured-project-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .featured-project-description {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .talks-section {
+            padding: 100px 0;
+            background-color: var(--secondary-bg);
+            position: relative;
+        }
+
+        .talks-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .talk-card {
+            background-color: var(--primary-bg);
+            padding: 30px;
+            border: 1px solid rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .talk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .talk-location {
+            font-size: 14px;
+            color: var(--secondary-text);
+            margin-bottom: 10px;
+        }
+
+        .talk-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .talk-description {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .talk-date {
+            font-size: 14px;
+            color: var(--secondary-text);
+        }
+
         footer {
             background-color: var(--accent);
             color: var(--primary-bg);
@@ -316,6 +545,19 @@
                 font-size: 8vw;
             }
             
+            .featured-project,
+            .featured-project:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-project:nth-child(even) .featured-project-content {
+                order: 0;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
             .btn {
                 display: block;
                 width: 100%;
@@ -334,13 +576,14 @@
     <header>
         <div class="container">
             <nav class="nav">
-                <div class="logo">YourName</div>
+                <div class="logo">Ali Mehdi</div>
                 <div class="nav-links">
                     <a href="#" class="nav-link">Home</a>
-                    <a href="#" class="nav-link">AI Projects</a>
-                    <a href="#" class="nav-link">Artwork</a>
-                    <a href="#" class="nav-link">About</a>
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#language-tech" class="nav-link">Language Tech</a>
+                    <a href="#digital-art" class="nav-link">Digital Art</a>
+                    <a href="#vr-projects" class="nav-link">VR Projects</a>
+
+                    <a href="#about" class="nav-link">About</a>
                 </div>
             </nav>
         </div>
@@ -350,67 +593,162 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="typewriter-heading">AI & Creative Exploration</h1>
-                    <p class="hero-description">Welcome to my digital playground where artificial intelligence meets artistic expression. Exploring the intersection of technology and creativity through projects, experiments, and visual art.</p>
-                    <a href="#" class="btn btn-primary">View Projects</a>
-                    <a href="#" class="btn btn-secondary">About Me</a>
+                    <h1 class="typewriter-heading">AI Explorer & Digital Artist</h1>
+                    <p class="hero-description">Exploring the intersection of computational linguistics, Indigenous knowledge, and critical perspectives on technology. As Senior Director at Heritage Lab and CEO of Pytri, my work spans language models, robot-themed art, VR experiences, and 3D cultural recreations.</p>
+                    <a href="#featured" class="btn btn-primary">View Projects</a>
+                    <a href="#about" class="btn btn-secondary">About Me</a>
                 </div>
             </div>
         </section>
 
-        <section class="portfolio-section">
+        <section id="featured" class="portfolio-section">
             <div class="container">
-                <h2 class="section-heading">AI Projects</h2>
+                <h2 class="section-heading">Featured Projects</h2>
+                
+                <div class="featured-project">
+                    <img src="/api/placeholder/600/400" alt="Heritage Lab - Indigenous Language Models" class="featured-project-image">
+                    <div class="featured-project-content">
+                        <span class="featured-project-category">Computational Linguistics</span>
+                        <h3 class="featured-project-title">Heritage Lab</h3>
+                        <p class="featured-project-description">An Indigenous-led non-profit building community-based language models and tools. This initiative focuses on digital sovereignty, preserving linguistic heritage, and creating technologies that reflect Indigenous values and perspectives.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="featured-project">
+                    <img src="/api/placeholder/600/400" alt="3D Indigenous Animals with Syllabics" class="featured-project-image">
+                    <div class="featured-project-content">
+                        <span class="featured-project-category">3D Cultural Recreation</span>
+                        <h3 class="featured-project-title">Indigenous 3D Recreations</h3>
+                        <p class="featured-project-description">A project that recreates Indigenous animals and artifacts in 3D space, with syllabics from their language composing the animals and artifacts. This work explores the relationship between language, form, and cultural representation.</p>
+                        <a href="#" class="btn btn-secondary">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="featured-project">
+                    <img src="/api/placeholder/600/400" alt="VR Drone Filming in Nunavik" class="featured-project-image">
+                    <div class="featured-project-content">
+                        <span class="featured-project-category">Virtual Reality</span>
+                        <h3 class="featured-project-title">Bird's-Eye VR Experience</h3>
+                        <p class="featured-project-description">Exploring aerial perspectives through VR drone filming in Nunavik. This project captures cultural practices and landscapes from novel viewpoints, creating immersive experiences that bridge traditional knowledge and cutting-edge technology.</p>
+                        <a href="#" class="btn btn-secondary">Experience VR</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <div class="dotted-gradient"></div>
+            <div class="container">
+                <div class="quote-content">
+                    <p class="quote-text">Technology without critical reflection becomes the very system it was meant to disrupt.</p>
+                    <p class="quote-author">— Personal Philosophy</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="language-tech" class="portfolio-section">
+            <div class="container">
+                <h2 class="section-heading">Language Technology</h2>
                 <div class="grid">
                     <div class="project-card">
-                        <img src="/api/placeholder/400/320" alt="AI Project" class="project-img">
-                        <span class="project-category">Machine Learning</span>
-                        <h3 class="project-title">Neural Style Transfer</h3>
-                        <p class="project-description">An exploration of style transfer algorithms to blend artistic styles with photography.</p>
+                        <img src="/api/placeholder/400/320" alt="Indigenous Language Model" class="project-img">
+                        <span class="project-category">Computational Linguistics</span>
+                        <h3 class="project-title">Community-Based Language Models</h3>
+                        <p class="project-description">Developing language models that center Indigenous communities and knowledge systems, ensuring digital language resources remain under community control.</p>
                         <a href="#" class="btn btn-secondary">View Project</a>
                     </div>
                     <div class="project-card">
-                        <img src="/api/placeholder/400/320" alt="AI Project" class="project-img">
-                        <span class="project-category">Natural Language Processing</span>
-                        <h3 class="project-title">Poetry Generator</h3>
-                        <p class="project-description">A custom language model that generates poetry in the style of classic authors.</p>
+                        <img src="/api/placeholder/400/320" alt="Manga Generator" class="project-img">
+                        <span class="project-category">Cultural Representation</span>
+                        <h3 class="project-title">Inuit Representation in Manga</h3>
+                        <p class="project-description">A manga generator trained to properly represent Inuit facial features, addressing representational gaps in AI-generated artwork.</p>
                         <a href="#" class="btn btn-secondary">View Project</a>
                     </div>
                     <div class="project-card">
-                        <img src="/api/placeholder/400/320" alt="AI Project" class="project-img">
-                        <span class="project-category">Computer Vision</span>
-                        <h3 class="project-title">Object Detection System</h3>
-                        <p class="project-description">Real-time object detection system trained on custom datasets.</p>
+                        <img src="/api/placeholder/400/320" alt="Language Preservation" class="project-img">
+                        <span class="project-category">Digital Preservation</span>
+                        <h3 class="project-title">Language Documentation Tools</h3>
+                        <p class="project-description">Creating accessible tools for language documentation that empower communities to record, preserve, and revitalize their languages.</p>
                         <a href="#" class="btn btn-secondary">View Project</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="portfolio-section">
+        <section id="digital-art" class="portfolio-section">
             <div class="container">
-                <h2 class="section-heading">Artwork</h2>
+                <h2 class="section-heading">Digital & Robot Art</h2>
                 <div class="grid">
                     <div class="project-card">
-                        <img src="/api/placeholder/400/320" alt="Artwork" class="project-img">
-                        <span class="project-category">Digital Art</span>
-                        <h3 class="project-title">Abstract Series I</h3>
-                        <p class="project-description">A collection of abstract digital compositions exploring form and contrast.</p>
-                        <a href="#" class="btn btn-secondary">View Artwork</a>
+                        <img src="/api/placeholder/400/320" alt="Robot Art" class="project-img">
+                        <span class="project-category">Cautionary Art</span>
+                        <h3 class="project-title">Mechanical Futures</h3>
+                        <p class="project-description">An avant-garde series exploring the relationship between humanity and AI through robot-themed art that questions technological determinism.</p>
+                        <a href="#" class="btn btn-secondary">View Gallery</a>
                     </div>
                     <div class="project-card">
-                        <img src="/api/placeholder/400/320" alt="Artwork" class="project-img">
-                        <span class="project-category">Mixed Media</span>
-                        <h3 class="project-title">Technological Decay</h3>
-                        <p class="project-description">Exploring the intersection of technology and nature through mixed media.</p>
-                        <a href="#" class="btn btn-secondary">View Artwork</a>
+                        <img src="/api/placeholder/400/320" alt="Post-Apocalyptic Art" class="project-img">
+                        <span class="project-category">Speculative Fiction</span>
+                        <h3 class="project-title">After The Singularity</h3>
+                        <p class="project-description">Post-apocalyptic visualizations that imagine life after technological collapse, examining the fragility of digital infrastructure.</p>
+                        <a href="#" class="btn btn-secondary">View Gallery</a>
                     </div>
                     <div class="project-card">
-                        <img src="/api/placeholder/400/320" alt="Artwork" class="project-img">
-                        <span class="project-category">AI-Generated</span>
-                        <h3 class="project-title">Dream Landscapes</h3>
-                        <p class="project-description">Landscapes generated through custom GANs and refined by hand.</p>
-                        <a href="#" class="btn btn-secondary">View Artwork</a>
+                        <img src="/api/placeholder/400/320" alt="Tech Commentary" class="project-img">
+                        <span class="project-category">Critical Tech Art</span>
+                        <h3 class="project-title">Silicon Nihilism</h3>
+                        <p class="project-description">Visual commentary on big tech's impact, exploring themes of surveillance, algorithmic control, and digital determinism.</p>
+                        <a href="#" class="btn btn-secondary">View Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vr-projects" class="portfolio-section">
+            <div class="container">
+                <h2 class="section-heading">VR & Immersive Projects</h2>
+                <div class="grid">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/320" alt="Cultural VR" class="project-img">
+                        <span class="project-category">Cultural Documentation</span>
+                        <h3 class="project-title">Nunavik in VR</h3>
+                        <p class="project-description">Virtual reality documentation of cultural practices in Nunavik, creating immersive educational experiences.</p>
+                        <a href="#" class="btn btn-secondary">Experience VR</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/320" alt="Drone VR" class="project-img">
+                        <span class="project-category">Experimental Perspectives</span>
+                        <h3 class="project-title">Aerial VR Filming</h3>
+                        <p class="project-description">Bird's-eye perspective VR experiences captured via drone technology, exploring new ways of seeing landscapes.</p>
+                        <a href="#" class="btn btn-secondary">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="gifs/animal-syllabics.gif" alt="3D Indigenous Art" class="project-img">
+                        <span class="project-category">Language & Form</span>
+                        <h3 class="project-title">Syllabic Sculptures</h3>
+                        <p class="project-description">3D constructions of animals and artifacts composed from Indigenous syllabics, merging language and form.</p>
+                        <a href="#" class="btn btn-secondary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <img src="/api/placeholder/500/600" alt="Ali Mehdi" class="about-image">
+                    <div class="about-text">
+                        <h2 class="about-heading">About Ali Mehdi</h2>
+                        <p class="about-description">I hold a Master's in Computer Science with specialization in AI, and apply my expertise as Senior Director at Heritage Lab and CEO of Pytri. My work spans technology development and critical artistic exploration, with a focus on Indigenous language preservation, ethical AI, and cultural representation in technology.</p>
+                        <ul class="about-facts">
+                            <li class="about-fact">CEO at Pytri, building bacteria and cancer quantification technology using AI</li>
+                            <li class="about-fact">Senior Director at Heritage Lab, an Indigenous-led non-profit building community-based language models</li>
+                            <li class="about-fact">Created VR drone filming techniques to explore birds-eye perspective experiences</li>
+                            <li class="about-fact">Developed manga generators that properly represent Inuit facial features</li>
+                            <li class="about-fact">Currently building robotic animals that express environmental conditions through interaction with AI</li>
+                        </ul>
+                        <p class="about-description">My approach balances technological innovation with critical perspectives on big tech, exploring the promises and perils of AI through both practical applications and artistic expression.</p>
                     </div>
                 </div>
             </div>
@@ -421,10 +759,10 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <h3 class="footer-heading">YourName</h3>
-                    <p>AI Researcher & Digital Artist<br>Based in [Your City]</p>
+                    <h3 class="footer-heading">Ali Mehdi</h3>
+                    <p>AI Explorer & Digital Artist<br>Based in Montréal/Nunavik</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon">in</a>
+                        <a href="https://www.linkedin.com/in/ali-mehdi-1b1bbb143/" class="social-icon">in</a>
                         <a href="#" class="social-icon">gh</a>
                         <a href="#" class="social-icon">tw</a>
                     </div>
@@ -433,22 +771,23 @@
                     <h3 class="footer-heading">Navigation</h3>
                     <div class="footer-links">
                         <a href="#">Home</a>
-                        <a href="#">AI Projects</a>
-                        <a href="#">Artwork</a>
-                        <a href="#">About</a>
-                        <a href="#">Contact</a>
+                        <a href="#language-tech">Language Tech</a>
+                        <a href="#digital-art">Digital Art</a>
+                        <a href="#vr-projects">VR Projects</a>
+
+                        <a href="#about">About</a>
                     </div>
                 </div>
                 <div>
-                    <h3 class="footer-heading">Contact</h3>
+                    <h3 class="footer-heading">Connect</h3>
                     <div class="footer-links">
-                        <a href="mailto:you@example.com">you@example.com</a>
-                        <a href="#">Schedule a call</a>
+                        <a href="mailto:ali.mehdi@heritagelab.ca">ali.mehdi@heritagelab.ca</a>
+                        <a href="https://www.heritagelab.ca" target="_blank">Heritage Lab</a>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                © 2025 YourName. All rights reserved.
+                © 2025 Ali Mehdi. All rights reserved.
             </div>
         </div>
     </footer>
